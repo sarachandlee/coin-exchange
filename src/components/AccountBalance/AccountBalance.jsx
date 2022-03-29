@@ -12,7 +12,7 @@ const Section = styled.section`
 export default function AccountBalance(props) {
   const buttonText = (props.hideOrShow) ? 'Hide Balance' : 'Show Balance';
   let content = null;
-
+  
   if( props.hideOrShow  ) {
     content = <>Balance: ${props.amount}</>;
   }
@@ -21,7 +21,6 @@ export default function AccountBalance(props) {
     <Section>
       {content}
       <button onClick={props.handleBalanceChange}>{buttonText}</button>
-      <button onClick={props.getCrypto}>Get $$</button>
     </Section>
   );
 }
