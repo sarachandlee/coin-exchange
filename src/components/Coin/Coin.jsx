@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableCell from '@mui/material/TableCell';
-import TableRow from '@mui/material/TableRow';
-import Button from '@mui/material/Button';
+import styled from 'styled-components';
+
+const Td = styled.td`
+  border: 1px solid #ccc;
+  width: 25vh;
+`;
 
 export default function Coin(props) {
   const handleClick = (event) => {
@@ -11,15 +14,15 @@ export default function Coin(props) {
   }
 
   return (
-      <TableRow>
-          <TableCell>{props.name}</TableCell>
-          <TableCell>{props.ticker}</TableCell>
-          <TableCell>${props.price}</TableCell>
-          {props.hideOrShow ? <TableCell>${props.balance}</TableCell> : null}
-          <TableCell>
-            <Button onClick={handleClick} variant="contained" color="success">Refresh</Button>
-          </TableCell>
-      </TableRow>
+      <tr>
+          <Td>{props.name}</Td>
+          <Td>{props.ticker}</Td>
+          <Td>${props.price}</Td>
+          {props.hideOrShow ? <Td>${props.balance}</Td> : null}
+          <Td>
+            <button onClick={handleClick}>Refresh</button>
+          </Td>
+      </tr>
   )
 
 }

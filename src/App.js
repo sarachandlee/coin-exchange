@@ -2,8 +2,14 @@ import React, {useState, useEffect} from 'react';
 import CoinList from './components/CoinList/CoinList';
 import AccountBalance from './components/AccountBalance/AccountBalance';
 import Header from './components/ExchangeHeader/ExchangeHeader';
+import styled from 'styled-components';
 import axios from 'axios';
-import Container from '@mui/material/Container';
+
+const Div = styled.div`
+  text-align: center;
+  background-color: #282c34;
+  color: white;
+`;
 
 const COIN_COUNT = 10;
 
@@ -22,7 +28,6 @@ function App(props) {
     const tickerURL = 'https://api.coinpaprika.com/v1/tickers/';
     const promises = coinIds.map( key => axios.get(tickerURL + key));
     const coinData = await Promise.all(promises);
-    console.log(coinData);
     //Retreive the prices
     const coinPriceData = coinData.map( function(response) {
       const coin = response.data;
@@ -47,6 +52,7 @@ function App(props) {
   const handleRefresh = async (valueChangeId) => {
     const tickerURL = `https://api.coinpaprika.com/v1/tickers/${valueChangeId}`;
     const response = await axios.get(tickerURL);
+    debugger;
     const newPrice = formatPrice(response.data.quotes['USD'].price);
     const newCoinData = coinData.map( function(values) {
         let newValues = {...values};
@@ -67,7 +73,7 @@ function App(props) {
   }
 
   return (
-    <Container maxWidth="lg">
+    <Div>
       <Header />
       <AccountBalance 
         amount={balance} 
@@ -80,7 +86,7 @@ function App(props) {
         handleRefresh={handleRefresh} 
         hideOrShow={hideOrShow} 
       />
-    </Container>
+    </Div>
   );  
 }
 
