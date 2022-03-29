@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import CoinList from './components/CoinList/CoinList';
 import AccountBalance from './components/AccountBalance/AccountBalance';
 import Header from './components/ExchangeHeader/ExchangeHeader';
-import './App.css';
 import axios from 'axios';
 import Container from '@mui/material/Container';
 
