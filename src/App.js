@@ -69,6 +69,10 @@ function App(props) {
     setHideOrShow(oldValue => !oldValue);
   }
 
+  const getCrypto = () => {
+    setBalance( balance + 1000 );
+  }
+
   return (
     <Div>
       <Header />
@@ -76,6 +80,7 @@ function App(props) {
         amount={balance} 
         hideOrShow={hideOrShow} 
         handleBalanceChange={handleBalanceChange} 
+        getCrypto={getCrypto}
       />
       <CoinList 
         coinData={coinData} 
