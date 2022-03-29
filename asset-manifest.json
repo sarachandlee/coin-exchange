@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/coin-exchange/static/css/main.d7f9d0e5.css",
+    "main.js": "/coin-exchange/static/js/main.2a87c40d.js",
+    "static/js/787.5eeded1b.chunk.js": "/coin-exchange/static/js/787.5eeded1b.chunk.js",
+    "static/media/logo.svg": "/coin-exchange/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/coin-exchange/index.html",
+    "main.d7f9d0e5.css.map": "/coin-exchange/static/css/main.d7f9d0e5.css.map",
+    "main.2a87c40d.js.map": "/coin-exchange/static/js/main.2a87c40d.js.map",
+    "787.5eeded1b.chunk.js.map": "/coin-exchange/static/js/787.5eeded1b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7f9d0e5.css",
+    "static/js/main.2a87c40d.js"
+  ]
+}
