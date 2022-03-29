@@ -1,3 +1,8 @@
+body {
+    text-align: center;
+    background-color: #282c34;
+    color: white;
+}
 .hide {
     text-shadow: 0 0 32px white;
     color: transparent;

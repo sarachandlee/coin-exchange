@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Section = styled.section`
-  font-size: 3rem;
-  max-width: 80%;
-  padding:1.5rem;
-  margin: 0 auto;
-`;
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
 export default function AccountBalance(props) {
   const buttonText = (props.hideOrShow) ? 'Hide Balance' : 'Show Balance';
   let content = null;
 
   if( props.hideOrShow  ) {
-    content = <>Balance: ${props.amount}</>;
+    content = <Typography variant="h4" component="h4" gutterBottom>
+                Balance: ${props.amount}
+              </Typography>
   }
 
   return (
-    <Section>
-      {content}
-      <button onClick={props.handleBalanceChange}>{buttonText}</button>
-      <button onClick={props.getCrypto}>Get $$</button>
-    </Section>
+    <Box >
+      <Stack spacing={2} direction="row" sx={{ justifyContent: 'center', mb: 2 }}>
+        {content}
+        <Button variant="outlined" onClick={props.handleBalanceChange}>{buttonText}</Button>
+        <Button variant="contained" onClick={props.getCrypto}>Get $$</Button>
+      </Stack>
+    </Box>
   );
 }
 
