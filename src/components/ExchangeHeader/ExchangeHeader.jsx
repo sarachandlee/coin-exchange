@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import styled from 'styled-components';
 
@@ -20,17 +20,11 @@ const H1 = styled.h1`
     font-size: 4rem;
 `
 
-export default class ExchangeHeader extends Component {
-    constructor(props) {
-        super(props);
-        this.logo = logo;
-    }
-  render() {
+export default function ExchangeHeader() {
     return (
         <Header>
-            <Img src={this.logo} alt='React logo' />
+            <Img src={logo} alt='React logo' />
             <H1 className='App-title'>Coin Exchange</H1>
         </Header>
     )
-  }
 }
