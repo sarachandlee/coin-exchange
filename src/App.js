@@ -22,14 +22,18 @@ function App(props) {
 
 
   const componentDidMount = async () => {
-    const response = await axios.get('https://api.coinpaprika.com/v1/coins')
-    const coinIds = response.data.slice(0, COIN_COUNT).map( coin => coin.id );
-    const tickerURL = 'https://api.coinpaprika.com/v1/tickers/';
-    const promises = coinIds.map( key => axios.get(tickerURL + key));
-    const coinData = await Promise.all(promises);
+    // const response = await axios.get('https://api.coinpaprika.com/v1/coins')
+    // const coinIds = response.data.slice(0, COIN_COUNT).map( coin => coin.id );
+    // const tickerURL = 'https://api.coinpaprika.com/v1/tickers/';
+    // const promises = coinIds.map( key => axios.get(tickerURL + key));
+    // const coinData = await Promise.all(promises);
+    const response = await axios.get('https://api.coinpaprika.com/v1/tickers/');
+    const coinData = response.data.sort(function (x, y) {
+                      return x.rank - y.rank;
+                  })
+                  .slice(0, COIN_COUNT);
     //Retreive the prices
-    const coinPriceData = coinData.map( function(response) {
-      const coin = response.data;
+    const coinPriceData = coinData.map( function(coin) {
       return {
         key: coin.id,
         name: coin.name,
@@ -37,7 +41,7 @@ function App(props) {
         balance: 0,
         price:formatPrice(coin.quotes['USD'].price),
       }
-    })
+    });
     setCoinData(coinPriceData);
   }
 
@@ -51,7 +55,6 @@ function App(props) {
   const handleRefresh = async (valueChangeId) => {
     const tickerURL = `https://api.coinpaprika.com/v1/tickers/${valueChangeId}`;
     const response = await axios.get(tickerURL);
-    debugger;
     const newPrice = formatPrice(response.data.quotes['USD'].price);
     const newCoinData = coinData.map( function(values) {
         let newValues = {...values};
@@ -67,6 +70,10 @@ function App(props) {
     setHideOrShow(oldValue => !oldValue);
   }
 
+  const getCash = () => {
+    setBalance(balance => balance + 1000);
+  }
+
   return (
     <Div>
       <Header />
@@ -74,6 +81,7 @@ function App(props) {
         amount={balance} 
         hideOrShow={hideOrShow} 
         handleBalanceChange={handleBalanceChange} 
+        getCash = {getCash}
       />
       <CoinList 
         coinData={coinData} 
