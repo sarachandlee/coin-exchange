@@ -7,8 +7,14 @@ export default function AccountBalance(props) {
 
   let content = null;
   
+  const value = (props.amount).toLocaleString(
+    undefined, // leave undefined to use the visitor's browser 
+               // locale or a string like 'en-US' to override it.
+    { minimumFractionDigits: 2 }
+  );
+
   if( props.hideOrShow  ) {
-    content = <><h3>Balance: ${props.amount}</h3></>;
+    content = <><h3>Balance: ${value}</h3></>;
   }
 
   return (
