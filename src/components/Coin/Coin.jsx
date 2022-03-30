@@ -1,11 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Td = styled.td`
-  border: 1px solid #ccc;
-  width: 25vh;
-`;
 
 export default function Coin(props) {
   const handleClick = (event) => {
@@ -15,13 +9,13 @@ export default function Coin(props) {
 
   return (
       <tr>
-          <Td>{props.name}</Td>
-          <Td>{props.ticker}</Td>
-          <Td>${props.price}</Td>
-          {props.hideOrShow ? <Td>${props.balance}</Td> : null}
-          <Td>
-            <button onClick={handleClick}>Refresh</button>
-          </Td>
+          <td>{props.name}</td>
+          <td>{props.ticker}</td>
+          <td>${props.price}</td>
+          {props.hideOrShow ? <td>${props.balance}</td> : null}
+          <td>
+            <button onClick={handleClick} className='btn btn-primary btn-sm'>Refresh</button>
+          </td>
       </tr>
   )
 

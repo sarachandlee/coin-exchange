@@ -1,23 +1,16 @@
 import React from 'react';
 import Coin from '../Coin/Coin';
-import styled from 'styled-components';
-
-const Table = styled.table`
-    margin: 50px auto;
-    display:inline-block;
-    font-size: 1.4rem;
-`
 
 export default function CoinList(props) {
   return (
-      <Table>
+      <table className='table table-hover table-striped table-bordered mx-auto w-75'>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Ticker</th>
-          <th>Price</th>
-          {props.hideOrShow ? <th>Balance</th> : null}
-          <th>Actions</th>
+          <th scope='col'>Name</th>
+          <th scope='col'>Ticker</th>
+          <th scope='col'>Price</th>
+          {props.hideOrShow ? <th scope='col'>Balance</th> : null}
+          <th scope='col'>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +29,6 @@ export default function CoinList(props) {
           )
         }
       </tbody>
-    </Table>
+    </table>
   )
 }

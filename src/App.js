@@ -2,14 +2,10 @@ import React, {useState, useEffect} from 'react';
 import CoinList from './components/CoinList/CoinList';
 import AccountBalance from './components/AccountBalance/AccountBalance';
 import Header from './components/ExchangeHeader/ExchangeHeader';
-import styled from 'styled-components';
 import axios from 'axios';
+import 'bootswatch/dist/quartz/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/js/all';
 
-const Div = styled.div`
-  text-align: center;
-  background-color: #282c34;
-  color: white;
-`;
 const COIN_COUNT = 10;
 
 const formatPrice = price => parseFloat(Number(price).toFixed(4));
@@ -17,16 +13,11 @@ const formatPrice = price => parseFloat(Number(price).toFixed(4));
 function App(props) {
 
   const [balance, setBalance] = useState(10000);
-  const [hideOrShow, setHideOrShow] = useState(true);
+  const [hideOrShow, setHideOrShow] = useState(false);
   const [coinData, setCoinData] = useState([]);
 
 
   const componentDidMount = async () => {
-    // const response = await axios.get('https://api.coinpaprika.com/v1/coins')
-    // const coinIds = response.data.slice(0, COIN_COUNT).map( coin => coin.id );
-    // const tickerURL = 'https://api.coinpaprika.com/v1/tickers/';
-    // const promises = coinIds.map( key => axios.get(tickerURL + key));
-    // const coinData = await Promise.all(promises);
     const response = await axios.get('https://api.coinpaprika.com/v1/tickers/');
     const coinData = response.data.sort(function (x, y) {
                       return x.rank - y.rank;
@@ -75,7 +66,7 @@ function App(props) {
   }
 
   return (
-    <Div>
+    <main className='text-center'>
       <Header />
       <AccountBalance 
         amount={balance} 
@@ -88,7 +79,7 @@ function App(props) {
         handleRefresh={handleRefresh} 
         hideOrShow={hideOrShow} 
       />
-    </Div>
+    </main>
   );  
 }
 

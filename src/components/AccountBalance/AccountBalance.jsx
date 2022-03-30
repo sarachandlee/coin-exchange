@@ -1,28 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Section = styled.section`
-  font-size: 3rem;
-  max-width: 80%;
-  padding:1.5rem;
-  margin: 0 auto;
-`;
 
 export default function AccountBalance(props) {
   const buttonText = (props.hideOrShow) ? 'Hide Balance' : 'Show Balance';
+  const buttonClass = 'btn ms-2 ' + (props.hideOrShow ? 'btn-warning' : 'btn-info');
+
   let content = null;
   
   if( props.hideOrShow  ) {
-    content = <>Balance: ${props.amount}</>;
+    content = <><h3>Balance: ${props.amount}</h3></>;
   }
 
   return (
-    <Section>
+    <section className='mb-3'>
       {content}
-      <button onClick={props.handleBalanceChange}>{buttonText}</button>
-      <button onClick={props.getCash}>Get Some Cash</button>
-    </Section>
+      <button onClick={props.handleBalanceChange} className={buttonClass}>{buttonText}</button>
+      <button onClick={props.getCash} className='btn btn-success ms-2'>
+        <i className="fa-solid fa-helicopter"></i> Get Some Cash
+      </button>
+    </section>
   );
 }
 
